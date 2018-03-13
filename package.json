@@ -1,0 +1,25 @@
+{
+  "name": "spartan-funds-coding-challenge",
+  "version": "1.0.0",
+  "description": "Spartan Funds coding challenge",
+  "main": "sma.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/David98Wang/spartan-funds-coding-challenge.git"
+  },
+  "keywords": [
+    "Spartan"
+  ],
+  "author": "David Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/David98Wang/spartan-funds-coding-challenge/issues"
+  },
+  "homepage": "https://github.com/David98Wang/spartan-funds-coding-challenge#readme",
+  "dependencies": {
+    "mongodb": "^3.0.4"
+  }
+}
