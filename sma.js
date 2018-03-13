@@ -8,7 +8,7 @@ var URL = 'mongodb://localhost:27017/test';  // This is the URL for MongoDb, set
                                              // variable SAVE_TO_MONGODB to true
                                              // if wish to save result to a
                                              // collection
-var SAVE_TO_MONGODB = true;
+var SAVE_TO_MONGODB = false;
 
 /*data.sort(function(a,b){
     var dateA = new Date(a.date);
@@ -65,14 +65,14 @@ function storeMovingAverage(index, ave) {
 /**
  * Save the result to a file called result.jsons
  */
-fs.writeFile('./result.json', JSON.stringify(result), function(err) {
+fs.writeFile('./Result.json', JSON.stringify(result), function(err) {
   if (err) {
     return console.log(err);
   }
-  console.log('Result saved to \'result.json\'');
+  console.log('Result saved to \'Result.json\'');
 });
 /**
- * Write to mongo db if SAVE_TO_MONGODB is true. 
+ * Write to mongo db if SAVE_TO_MONGODB is true.
  * Stores in "Result" collection in "Result" database.
  */
 if (SAVE_TO_MONGODB) {
@@ -87,15 +87,13 @@ if (SAVE_TO_MONGODB) {
     dbo.createCollection('Result', function(err, res) {
       if (err) throw err;
       console.log('Collection located/created');
+      dbo.collection('Result').insert(result, function(err, res) {
+        if (err) throw err;
+        console.log('Documents inserted');
+        db.close();
+      });
     });
-    // Remove all entires in Result collection. 
-    //Otherwise I'll have to check for duplicates and the code gets messy. ¯\_(ツ)_/¯
-    dbo.collection('Result').remove({});
     // Store averages to the 'Result" collection
-    dbo.collection('Result').insert(result, function(err, res) {
-      if (err) throw err;
-      console.log('1 document inserted');
-      db.close();
-    });
+
   });
 }

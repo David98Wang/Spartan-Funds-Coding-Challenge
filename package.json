@@ -21,5 +21,8 @@
   "homepage": "https://github.com/David98Wang/spartan-funds-coding-challenge#readme",
   "dependencies": {
     "mongodb": "^3.0.4"
+  },
+  "scripts":{
+	"start": "node sma.js"
   }
 }
